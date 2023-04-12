@@ -66,9 +66,10 @@ class cdpMasterDictHandler():
 
     def ssh_credential_test(username, password) -> bool:
     
+        test_host = "TEST-HOST-IP-OR-FQDN-GOES-HERE"
         credential_test_connection_details = { 
             "device_type": "cisco_ios",
-            "host": "S_CHG2AC9500_User1", # How can we remove this hard-coded variable?
+            "host": test_host,
             "username": username,
             "password": password,
 
