@@ -1,8 +1,5 @@
 """
 This script houses multiple functions related to interacting with the ServiceDesk/ManageEngine/Zoho API.
-
-See documentation at http://633-fl11-netlab-wiki-sv01.mke.cnty/books/how-to-guides/page/how-to-create-a-servicedesk-api-key
-
 """
 
 
