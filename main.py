@@ -19,7 +19,7 @@ def nb_retrieve_all_sites(netbox_access_token) -> list:
 
     site_data = {}
 
-    netbox_url = 'https://633-fl11-netbox-sv01'
+    netbox_url = 'https://NETBOX-URL-GOES-HERE'
     nb = pynetbox.api(netbox_url, token=netbox_access_token)
     
     sites = nb.dcim.sites.all()
