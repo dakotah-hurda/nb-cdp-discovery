@@ -17,7 +17,7 @@ class dns_resolve_hostname():
 
     def dns_reporter(request_item, dns_type):
         dns_query = resolver.Resolver()
-        dns_query.nameservers = ['172.31.1.1']
+        dns_query.nameservers = ['8.8.8.8'] # Your internal DNS address goes here.
         
         answer_list = []
 
