@@ -17,7 +17,7 @@ class scan_cdp_AP_neighbor():
 
         Returns as a string.
         """
-        controller = 'wlc_mer_5520'
+        controller = 'WLC-HOSTNAME-GOES-HERE'
         logger.debug(f"Beginning SSH scan on {controller}.")      
 
         connection_details = { 
@@ -52,7 +52,7 @@ class scan_cdp_AP_neighbor():
 
         Returns as a string.
         """
-        controller = 'cjf-mer-conversion-wlc01_mgmt'
+        controller = 'WLC2-HOSTNAME-GOES-HERE'
         logger.debug(f"Beginning SSH scan on {controller}.")      
 
         connection_details = { 
