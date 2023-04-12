@@ -23,7 +23,7 @@ class netbox_data_handler():
 
     def nbCreateHost(refined_host):
 
-        netbox_url = 'https://633-fl11-netbox-sv01'
+        netbox_url = 'https://NETBOX-URL-GOES-HERE'
         nb = pynetbox.api(netbox_url, token=netbox_access_token)
 
         devices = nb.dcim.devices.all()
