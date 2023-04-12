@@ -10,7 +10,7 @@ def myLogger(name):
     else:
         logger = logging.getLogger(name)
         logger.setLevel(logging.DEBUG)
-        handler = logging.handlers.SysLogHandler(address=('172.31.5.200',514))
+        handler = logging.handlers.SysLogHandler(address=('SYSLOG-SERVER-IP-GOES-HERE',514))
         formatter = logging.Formatter('%(asctime)s:%(levelname)s:%(name)s:%(message)s')
         handler.setFormatter(formatter)
         logger.addHandler(handler)
