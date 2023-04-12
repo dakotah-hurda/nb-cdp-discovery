@@ -62,7 +62,7 @@ class scan_cdp_device():
                 
                 if "Device ID:" in line:
                     device_id = line.split(": ")[1]
-                    if '.' in device_id: # Filters out '.mke.cnty' suffix
+                    if '.' in device_id: # Filters out '.domain.com' suffixes
                         device_id = device_id.split('.')[0]
                 
                 if "Port ID (outgoing port):" in line:
