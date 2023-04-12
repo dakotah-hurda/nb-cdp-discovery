@@ -107,7 +107,7 @@ class data_integrity_check():
                             # print(f"DEBUG3-FAIL: {ip_reversion_check}, {ip_addr}")
                             return(ip_answer, False)
 
-                elif len(ip_reversion_check) == 2: # Useful for parsing out values like ['633-fl11-nr01-sw01', '633-fl11-nr01-sw01.mke.cnty.']
+                elif len(ip_reversion_check) == 2: # Useful for parsing out values like ['hostname', 'hostname.domain.com']
                     item1 = ip_reversion_check[0]
                     item2 = ip_reversion_check[1]
 
@@ -367,7 +367,7 @@ class data_integrity_check():
         load_dotenv()
         site_name = site
         netbox_access_token = os.environ.get('NETBOX-ACCESS-TOKEN')
-        netbox_url = 'https://633-fl11-netbox-sv01'
+        netbox_url = 'https://NETBOX-URL-GOES-HERE'
         nb = pynetbox.api(netbox_url, token=netbox_access_token)
 
         loc_dict = data_integrity_check.compile_site_locations()
