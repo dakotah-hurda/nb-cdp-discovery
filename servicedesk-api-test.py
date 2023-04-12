@@ -3,8 +3,6 @@ This script is meant to be used after you have generated your relevant API token
 
 See ./servicedesk-token-generator.py if you need to generate tokens. 
 
-Also, wiki doc: http://633-fl11-netlab-wiki-sv01.mke.cnty/books/how-to-guides/page/how-to-create-a-servicedesk-api-key
-
 """
 
 import os
@@ -31,7 +29,7 @@ def retrieve_all_asset_id(start_index) -> json:
     It grabs 100 assets starting from the start_index number passed in, and returns the full data for parsing. 
     """
 
-    url = 'https://imsdservicedesk.milwaukeecountywi.gov/api/v3/assets'
+    url = 'https://SERVICEDESK-URL-GOES-HERE/api/v3/assets'
 
     payload = {
 
@@ -115,7 +113,7 @@ def asset_tag_serial_binding(asset_id, access_token) -> dict:
     
     asset_dict = {} # Instantiate the main dictionary. 
 
-    url = f'https://imsdservicedesk.milwaukeecountywi.gov/api/v3/assets/{asset_id}'
+    url = f'https://SERVICEDESK-URL-GOES-HERE/api/v3/assets/{asset_id}'
 
     headers = {
         'Authorization': 'Zoho-oauthtoken ' + access_token,
@@ -155,15 +153,6 @@ client_secret = os.environ.get('ZOHO-CLIENT-SECRET')
 access_token = os.environ.get('ZOHO-ACCESS-TOKEN')
 refresh_token = os.environ.get('ZOHO-REFRESH-TOKEN')
 
-# ---------------------------------------------------------------------------- #
-
-# with open('asset_list.txt', 'r') as f: # This section is just for speeding up testing, and can be removed for final release.
-#     for asset in f.readlines():
-#         asset_list.append(asset.rstrip())
-
-# ---------------------------------------------------------------------------- #
-
-
 try:
     asset_list = walk_asset_data()
 
@@ -191,17 +180,10 @@ for pos, asset_id in enumerate(asset_list):
         asset_dict = asset_tag_serial_binding(asset_id, access_token)
 
     except(HTTP401Exception): # This section is used when authentication fails with our provided access_token. If we receive a 401, we regenerate the access token and try again.
-        
-        # print(f"status code was 401, running access_token regeneration")
-        # input()
-        # print(f"Old access token: {access_token}")
-        
+                
         access_token = servicedeskApiTokenGenerator.RefreshAccessToken(client_id, client_secret, refresh_token)
         access_token = access_token['access_token']        
         
-        # print(f"New access token: {access_token}")
-        # input(f"Running new API request with new token {access_token}, hit ENTER")
-
         try:
             asset_dict = asset_tag_serial_binding(asset_id, access_token) # Retry the API call with a new access token. 
         except:
